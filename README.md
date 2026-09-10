@@ -3,18 +3,16 @@
 **2,751 aerial photos (41.9 GB) plus the terrestrial laser scans (8.7 GB, 43 stations) over
 Grant Park and downtown Chicago, June 2020.** CC BY 4.0.
 
-## ⬇ Download the images
+## ⬇ Download
 
 ### **[→ huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry](https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry)**
 
-**Click that, open the "Files and versions" tab, and download whatever you want.** No account,
-no signup, no tools, no command line. Just click files and they download.
+Browse the **Files** tab and take what you want — no account needed. The 50 GB of imagery and
+laser scans lives there because GitHub won't host files that size; this repo holds docs and
+checksums.
 
-The images and laser scans are 50 GB so they live there rather than on GitHub, which cannot
-host files that size. This page has the documentation and checksums.
-
-*Want one photo to look at? [Here's one.](https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry/resolve/main/images/Buildings_1-1.jpg)
-Command-line options are further down under [Download](#download).*
+[Sample image](https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry/resolve/main/images/Buildings_1-1.jpg)
+ · [command-line options](#download)
 
 ---
 
