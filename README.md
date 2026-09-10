@@ -100,22 +100,26 @@ Full project write-up: **[mattguertin.com/portfolio/chicago](https://mattguertin
 Images are named by the flight that produced them, so you can take a subset without
 downloading everything.
 
-| group | images | what it covers |
-|---|---:|---|
-| `Grid_Down_1` | 485 | nadir mapping grid, pass 1 |
-| `First_Flight_` | 400 | initial site survey orbit |
-| `Grid_Down_2` | 372 | nadir mapping grid, pass 2 |
-| `Park_Overhead_` | 354 | park canopy and open ground, overhead |
-| `Grid_Down_4` | 282 | nadir mapping grid, pass 4 |
-| `Buildings_3` | 258 | facade orbit — Michigan Ave frontage |
-| `Sunday_Night_Buildings` | 216 | low-light facade pass |
-| `Buildings_2` | 154 | facade orbit |
-| `Buildings_1` | 81 | facade orbit |
-| `Grid_Down_3` | 54 | nadir mapping grid, pass 3 |
-| `Buildings_4` | 54 | facade orbit |
-| `Park_Trees_NEW` | 24 | tree canopy detail |
-| `Sunday_Night_Street` | 17 | street-level low-light |
-| **total** | **2,751** | |
+| group | images | captured | altitude a.s.l. |
+|---|---:|---|---|
+| `Grid_Down_1` | 485 | 27 Jun, 11:33–11:49 | 240–289 m |
+| `First_Flight_` | 400 | 27 Jun, 06:52–07:32 | 221–310 m |
+| `Grid_Down_2` | 372 | 27 Jun, 11:55–12:14 | 281–298 m |
+| `Park_Overhead_` | 354 | 28 Jun, 13:47–14:06 | 183–298 m |
+| `Grid_Down_4` | 282 | 27 Jun, 19:59–20:14 | 202–285 m |
+| `Buildings_3` | 258 | 28 Jun, 06:55–07:13 | 211–315 m |
+| `Sunday_Night_Buildings` | 216 | 28 Jun, 19:33–19:47 | 203–214 m |
+| `Buildings_2` | 154 | 28 Jun, 06:36–06:48 | 206–314 m |
+| `Buildings_1` | 81 | 28 Jun, 06:17–06:23 | 225–315 m |
+| `Buildings_4` | 54 | 28 Jun, 06:04–06:17 | 189–311 m |
+| `Grid_Down_3` | 54 | 27 Jun, 19:57–19:59 | 234–235 m |
+| `Park_Trees_NEW` | 24 | 28 Jun, 13:51–13:53 | 184–193 m |
+| `Sunday_Night_Street` | 17 | 28 Jun, 19:48–19:49 | 211–216 m |
+| **total** | **2,751** | | |
+
+Group names are the flight names from capture. Times and altitudes above are read from EXIF,
+not estimated. Note `First_Flight_` is the only 16:9 group (5464 × 3070); everything else is
+3:2 apart from `Buildings_4` at 5366 × 3575.
 
 ## The capture rig
 

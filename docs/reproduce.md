@@ -8,7 +8,7 @@ capture.
 
 ## RealityCapture / RealityScan
 
-Settings behind the original solve.
+Suggested starting settings. These are recommendations, not a record of the original run.
 
 **Alignment**
 | setting | value | why |
@@ -23,8 +23,7 @@ Settings behind the original solve.
 Run a **draft alignment first.** At 2,751 × 20 MP this is a heavy project; find out that your
 settings work before committing to a full run.
 
-**If alignment splits into multiple components** — most often the low-light
-`Sunday_Night_*` groups failing to tie to the daylight passes. Options, in order of preference:
+**If alignment splits into multiple components**, options in order of preference:
 
 1. Align the daylight groups first, then add the night groups to the existing component.
 2. Add control points across two or three shared facades.
