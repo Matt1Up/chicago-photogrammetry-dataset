@@ -1,8 +1,7 @@
 # Chicago / Grant Park — Aerial Photogrammetry + Terrestrial Laser Dataset
 
-**2,751 full-resolution aerial photographs (41.9 GB) and 43 terrestrial laser scan stations
-of downtown Chicago's Grant Park, captured June 2020.**
-Released under CC BY 4.0 — free for commercial, academic and ML use with attribution.
+**2,751 aerial photos (41.9 GB) and 43 laser scan stations over Grant Park and downtown
+Chicago, June 2020.** CC BY 4.0.
 
 > ## 🏆 Winner — RealityCapture #RCmonthlyChallenge, August 2020
 >
@@ -18,52 +17,20 @@ Released under CC BY 4.0 — free for commercial, academic and ML use with attri
 
 ---
 
-## Why this exists
+## Grant Park, June 2020
 
-In late June 2020 the Grant Park festival grounds were empty. Lollapalooza had been
-cancelled for the first time in decades, and the field where a hundred thousand people should
-have been standing was just grass.
+Lollapalooza was cancelled that year. A friend was playing the virtual one and wanted the
+Chicago skyline behind him, so I flew the park and the surrounding downtown over two days.
 
-A friend was playing a set for the virtual Lollapalooza that replaced it, and wanted the
-Chicago skyline behind him. **That is the entire reason this capture exists.**
+The laser scanner went on the festival field itself — the two softball diamonds and the
+floodlit courts where Perry's Stage normally stands. That ground got the detail. The city
+around it was backdrop.
 
-Which is why the dataset is deliberately uneven, and that unevenness is the interesting part:
+Downtown was empty. That part is not repeatable.
 
-- **The city is drone photogrammetry** — 2,751 aerial frames covering the skyline, Michigan
-  Avenue frontage and the surrounding blocks. Enough to reconstruct a convincing backdrop.
-- **The festival field is terrestrial laser** — 43 scan stations concentrated on that specific
-  patch of ground, at far finer detail than anything around it. The field was the actual
-  subject. The rest of downtown Chicago was scenery.
+![The scanned ground](preview/site-field.jpg)
 
-![The scanned ground — softball diamonds and floodlit courts where Perry's Stage stands](preview/site-field.jpg)
-
-*The actual subject: the two softball diamonds and floodlit courts that Perry's Stage — the
-festival's dance stage — is built over. In any other summer this frame holds a crowd.*
-
-So you get a large-area urban capture with one patch of ground resolved to a much tighter
-tolerance than the rest, because that patch was the whole point. Datasets with that property
-are not easy to find, and it is not a flaw to be corrected — it is a real capture strategy,
-driven by an actual deliverable.
-
-It is also, incidentally, a record of a specific and strange moment. One of the most crowded
-places in an American summer, photographed completely empty — and not just the festival field.
-Downtown Chicago itself was clear. Empty streets, empty plazas, empty park, in a way that city
-had not been in living memory and has not been since.
-
-That is the real reason this dataset is worth keeping. **The conditions that made it possible
-do not come back.** A capture of this area at this density, with the ground and the streets
-this unobstructed, cannot simply be reflown by someone who decides they want one.
-
-## Why it is being released
-
-Public photogrammetry datasets at this scale are rare, and the ones that exist are usually
-downsampled, stripped of metadata, or synthetic. This is the **complete, unmodified source
-capture** behind a finished large-area reconstruction — original camera JPEGs straight out of
-the Lightroom export that fed the solve, with EXIF and GPS intact, organised by the flight
-that produced them.
-
-You can reproduce the reconstruction, benchmark your own pipeline against it, or pull the
-low-altitude building orbits out and use them on their own.
+*The field, empty. Perry's Stage is built over those diamonds and courts.*
 
 ## The reconstruction
 
@@ -125,15 +92,8 @@ not estimated. Note `First_Flight_` is the only 16:9 group (5464 × 3070); every
 
 ![FARO Focus S150 scanning beside the Metra tracks, Grant Park](preview/rig-laser-1.jpg)
 
-Aerial capture flown with a **DJI Mavic 2 Pro** (Hasselblad L1D-20c), covering the skyline and
-surrounding blocks.
-
-The **FARO Focus S150** terrestrial laser scanner was not there to fill aerial gaps in general
-— it was pointed at the festival field specifically, which needed to hold up under close
-inspection in a way the background skyline did not. It also captures what a drone structurally
-cannot: the ground plane, building bases, and the underside of tree canopy. A drone looks
-down, so anything directly beneath a horizontal surface is invisible to it no matter how many
-passes you fly.
+Aerial capture with a DJI Mavic 2 Pro (Hasselblad L1D-20c). Terrestrial laser with a FARO
+Focus S150, concentrated on the festival field rather than spread over the whole site.
 
 ## Download
 
@@ -164,23 +124,16 @@ See **[docs/reproduce.md](docs/reproduce.md)** for step-by-step alignment settin
 The dataset aligns in RealityCapture / RealityScan, Agisoft Metashape, COLMAP and Meshroom.
 Images carry GPS, so georeferencing works without ground control.
 
-## Known characteristics
-
-Read these before you file a bug — they are properties of the capture, not defects in the upload.
+## Notes
 
 - **Three sensor crops appear in the set.** 5467 × 3582 for most of it, 5464 × 3070 for the
   `First_Flight_` group, and 5366 × 3575 for 54 frames. Same lens throughout; the solver should
   still be told to treat them as one camera.
-- **These are Lightroom exports, not raw.** Developed from DNG in Lightroom Classic 9.3 with
-  consistent settings across the set. Raw files are not part of this release.
-- **The renders carry a "Capturing Reality" watermark.** The reconstruction was produced as a
-  RealityCapture Challenge entry on a promotional licence. The watermark is left intact
-  deliberately — it is part of the provenance. It appears only on the preview renders, never
-  on the dataset images.
-- **Overlapping coverage is intentional.** Several grid passes cover the same ground at
-  different altitudes and times of day. That redundancy is what makes the set useful for
-  studying pass-count and lighting effects, but it means naive "all images" alignment is
-  slower than a curated subset.
+- **These are Lightroom exports, not raw.** EXIF records processing in Lightroom Classic 9.3.
+- **The renders carry a "Capturing Reality" watermark.** It was a RealityCapture Challenge
+  entry on a promotional licence. Preview renders only, never the dataset images.
+- **Several passes cover the same ground** at different altitudes and times of day. A curated
+  subset aligns faster than all 2,751.
 
 ## Laser scans
 
@@ -212,7 +165,7 @@ See [CITATION.cff](CITATION.cff) for BibTeX and academic citation formats.
 ## Related
 
 - **[Tree photogrammetry dataset](https://github.com/Matt1Up/tree-photogrammetry-dataset)** —
-  812 images of a single tree, a controlled small-subject counterpart to this large-area set.
+  812 images of a single tree, with camera poses.
 - **[mattguertin.com](https://mattguertin.com)** — portfolio and other work.
 
 ---
