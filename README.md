@@ -150,8 +150,6 @@ Hierarchical 3DGS, Octree-GS, Scaffold-GS.
 Downsample to ~1600 px wide before training. Nothing trains at 5467 px, and the originals are
 here so you can pick your own resolution.
 
-Same applies to NeRF and other radiance-field work — poses first, then downsample.
-
 ## Notes
 
 - **Three sensor crops appear in the set.** 5467 × 3582 for most of it, 5464 × 3070 for the
