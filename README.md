@@ -108,26 +108,37 @@ back to metric you need the laser cloud as a registration target, or ground cont
 
 ## Download
 
-The images are hosted off GitHub — this repository holds the documentation, manifests and
-checksums. See **[docs/download.md](docs/download.md)** for mirrors and resumable download
-instructions.
+**→ [huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry](https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry)**
+
+Click the **Files** tab and download whatever you want in a browser — no tooling, no account.
+This GitHub repo holds the documentation, manifests and checksums; the images and laser scans
+live there.
+
+**One file, straight from a browser or the shell:**
 
 ```bash
-# sample pack first (~620 MB) — evaluate before committing to 42 GB
-./scripts/download.sh --sample
-
-# full image set
-./scripts/download.sh --full
-
-# a single capture group
-./scripts/download.sh --group Grid_Down_1
+curl -O https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry/resolve/main/images/Buildings_1-1.jpg
 ```
 
-Every file is checksummed. After downloading:
+**Everything, as a git repo** (needs git-lfs — this is 50 GB):
 
 ```bash
-./scripts/verify.sh
+git clone https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry
 ```
+
+**Or use the helper script**, which is just a wrapper around the Hugging Face CLI and adds
+resume, parallel transfers and hash checking:
+
+```bash
+pip install -U 'huggingface_hub[cli]'
+
+./scripts/download.sh --sample              # ~620 MB, look before committing to 42 GB
+./scripts/download.sh --full                # all 2,751 images
+./scripts/download.sh --laser               # the 241 laser scan files
+./scripts/download.sh --group Grid_Down_1   # one flight
+```
+
+More detail and mirrors in **[docs/download.md](docs/download.md)**.
 
 ## Reproducing the reconstruction
 
