@@ -95,6 +95,17 @@ not estimated. Note `First_Flight_` is the only 16:9 group (5464 × 3070); every
 Aerial capture with a DJI Mavic 2 Pro (Hasselblad L1D-20c). Terrestrial laser with a FARO
 Focus S150, concentrated on the festival field rather than spread over the whole site.
 
+## Scale
+
+The drone images are registered to the laser point cloud. **The laser is the scale reference —
+GPS was not used for scale.**
+
+Accuracy is best inside the laser coverage, which is the festival field. Outside that the
+photogrammetry extrapolates from that anchor, and drift increases with distance from it.
+
+If you re-align these images on their own, you get correct geometry at arbitrary scale. To get
+back to metric you need the laser cloud as a registration target, or ground control.
+
 ## Download
 
 The images are hosted off GitHub — this repository holds the documentation, manifests and
@@ -145,6 +156,9 @@ The 43 terrestrial laser stations are **not in this initial release.** They curr
 only in RealityCapture's internal `.lsp` format, which no other software can read. They are
 being converted to **E57** (the open ASTM standard, readable by CloudCompare, Metashape,
 Autodesk and Blender) and will ship as **v1.1**.
+
+This is the scale reference for the whole dataset, so v1.1 is what makes the images
+measurable rather than just reconstructable.
 
 Watch this repository for the release, or open an issue if you need them sooner.
 
