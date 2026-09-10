@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "Chicago / Grant Park Aerial Photogrammetry and Terrestrial Laser Dataset"
+abstract: >-
+  2,751 full-resolution geotagged aerial photographs (41.9 GB) and 43 terrestrial laser scan
+  stations covering Grant Park and the surrounding downtown Chicago blocks, captured 27-28 June
+  2020 with a DJI Mavic 2 Pro (Hasselblad L1D-20c) and a FARO Focus S150. Capture density is
+  deliberately uneven: the wider city is aerial photogrammetry, while the Lollapalooza festival
+  field -- empty that summer after the event was cancelled -- was laser scanned at
+  substantially higher detail as the primary subject. Released as unmodified source capture
+  with EXIF and GPS intact, organised by flight.
+authors:
+  - family-names: Guertin
+    given-names: Matthew
+    website: "https://mattguertin.com"
+date-released: 2020-06-28
+version: "1.0.0"
+license: CC-BY-4.0
+keywords:
+  - photogrammetry
+  - aerial imagery
+  - structure from motion
+  - laser scanning
+  - point cloud
+  - 3D reconstruction
+  - UAV
+  - drone
+  - dataset
+  - Chicago
+  - urban reconstruction
+  - terrestrial laser scanning
+  - FARO
+repository-code: "https://github.com/Matt1Up/chicago-photogrammetry-dataset"
+url: "https://mattguertin.com/portfolio/chicago/"

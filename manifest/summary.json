@@ -1,0 +1,21 @@
+{
+  "images": 2751,
+  "bytes": 45031591775,
+  "gib": 41.94,
+  "gps_invalid": 0,
+  "groups": {
+    "Grid_Down_1": 485,
+    "First_Flight_": 400,
+    "Grid_Down_2": 372,
+    "Park_Overhead_": 354,
+    "Grid_Down_4": 282,
+    "Buildings_3": 258,
+    "Sunday_Night_Buildings": 216,
+    "Buildings_2": 154,
+    "Buildings_1": 81,
+    "Buildings_4": 54,
+    "Grid_Down_3": 54,
+    "Park_Trees_NEW": 24,
+    "Sunday_Night_Street": 17
+  }
+}
