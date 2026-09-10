@@ -1,7 +1,7 @@
 # Chicago / Grant Park — Aerial Photogrammetry + Terrestrial Laser Dataset
 
-**2,751 aerial photos (41.9 GB) and 43 laser scan stations over Grant Park and downtown
-Chicago, June 2020.** CC BY 4.0.
+**2,751 aerial photos (41.9 GB) plus the terrestrial laser scans (8.7 GB, 43 stations) over
+Grant Park and downtown Chicago, June 2020.** CC BY 4.0.
 
 > ## 🏆 Winner — RealityCapture #RCmonthlyChallenge, August 2020
 >
@@ -60,7 +60,7 @@ Full project write-up: **[mattguertin.com/portfolio/chicago](https://mattguertin
 | **Bounds** | 41.867317 – 41.874759 N · −87.624511 – −87.619413 W |
 | **Altitude** | 183 – 315 m above sea level |
 | **Captured** | 27–28 June 2020, 06:52 to 19:49 |
-| **Laser** | 43 scan stations — *see "Laser scans" below* |
+| **Laser** | 241 files · 8.66 GB · 43 stations — [see below](#laser-scans) |
 
 ### Capture groups
 
@@ -131,9 +131,12 @@ Every file is checksummed. After downloading:
 
 ## Reproducing the reconstruction
 
-See **[docs/reproduce.md](docs/reproduce.md)** for step-by-step alignment settings.
-The dataset aligns in RealityCapture / RealityScan, Agisoft Metashape, COLMAP and Meshroom.
-Images carry GPS, so georeferencing works without ground control.
+See **[docs/reproduce.md](docs/reproduce.md)** for alignment settings. The images are ordinary
+geotagged JPEGs, so any structure-from-motion tool will read them — RealityScan, Metashape,
+COLMAP, Meshroom.
+
+The GPS in EXIF will place the reconstruction roughly on the map, but it is not the scale
+reference — see [Scale](#scale) above.
 
 ## Notes
 
@@ -152,15 +155,28 @@ Images carry GPS, so georeferencing works without ground control.
 
 *Registered laser point cloud — Grant Park tree line and ground plane.*
 
-The 43 terrestrial laser stations are **not in this initial release.** They currently exist
-only in RealityCapture's internal `.lsp` format, which no other software can read. They are
-being converted to **E57** (the open ASTM standard, readable by CloudCompare, Metashape,
-Autodesk and Blender) and will ship as **v1.1**.
+**241 files, 8.66 GB, 43 scan stations**, from a FARO Focus S150. This is the scale reference
+the images are registered to.
 
-This is the scale reference for the whole dataset, so v1.1 is what makes the images
-measurable rather than just reconstructable.
+| tier | files |
+|---|---:|
+| `quarter_res` | 209 |
+| `half_res` | 32 |
 
-Watch this repository for the release, or open an issue if you need them sooner.
+Two things to know before you download them:
+
+**They are in RealityScan's `.lsp` format.** RealityScan imports them directly with
+`importLaserScanFolder`, and RealityScan is free. Nothing else reads `.lsp`. An **E57**
+conversion (the open ASTM standard, readable by CloudCompare, Metashape, Autodesk, Blender)
+is planned — open an issue if you need it and I will prioritise it.
+
+**They are downsampled.** `half_res` and `quarter_res`, not full scanner resolution.
+
+```bash
+./scripts/download.sh --laser
+```
+
+`manifest/laser.csv` lists every file with its station, resolution tier and SHA-256.
 
 ## Licence
 

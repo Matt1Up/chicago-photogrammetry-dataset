@@ -1,8 +1,8 @@
 # Reproducing the reconstruction
 
-The dataset solves in RealityCapture / RealityScan, Agisoft Metashape, COLMAP and Meshroom.
-Below are the settings that produced the original result, plus the traps specific to *this*
-capture.
+The images are ordinary geotagged JPEGs, so any structure-from-motion tool reads them.
+Below are suggested starting settings and the things specific to *this* capture that are worth
+knowing before you spend hours on it.
 
 ---
 
@@ -56,8 +56,7 @@ Then: Optimize Cameras → Build Depth Maps (Medium) → Build Dense Cloud / Mes
 ```bash
 colmap feature_extractor \
   --database_path db.db --image_path images/ \
-  --ImageReader.camera_model SIMPLE_RADIAL \
-  --ImageReader.single_camera 1
+  --ImageReader.camera_model SIMPLE_RADIAL
 
 colmap exhaustive_matcher --database_path db.db     # small subsets only
 # for the full 2,751 use vocab-tree matching instead:
@@ -67,21 +66,28 @@ colmap vocab_tree_matcher --database_path db.db \
 colmap mapper --database_path db.db --image_path images/ --output_path sparse/
 ```
 
-`--ImageReader.single_camera 1` is correct here — every frame is the same physical lens at a
-fixed focal length. Exhaustive matching at this image count is O(n²) and impractical; use the
-vocabulary tree.
+**Do not pass `--ImageReader.single_camera 1`.** It is tempting because every frame came off
+the same lens, but the set contains three sensor crops (5467 × 3582, 5464 × 3070, 5366 × 3575).
+COLMAP keys intrinsics on image dimensions, so forcing a single camera across three sizes gives
+you one wrong calibration instead of three right ones. Left alone, COLMAP groups them correctly.
+
+Exhaustive matching at this image count is O(n²) and impractical — use the vocabulary tree, or
+**GLOMAP** in place of `colmap mapper`, which does global SfM and is substantially faster on
+sets this size.
 
 ---
 
 ## What to expect
 
 - **Every image carries a valid GPS fix.** All 2,751 have latitude, longitude and altitude in
-  EXIF, verified across the set — you can georeference straight from the images with no ground
-  control and no filtering.
+  EXIF, verified across the set — nothing to filter out. That will place the reconstruction on
+  the map, but **GPS is not the scale reference for this dataset** — the laser is. See *Scale*
+  in the README.
 - **Not every image will align, and that is fine.** Redundant grid coverage means a handful of
   dropped frames cost you nothing.
 - **Several passes overlap the same ground** at different altitudes and times of day. For a
   first run, take one `Grid_Down_*` group plus one `Buildings_*` group rather than everything —
   it solves far faster and looks nearly as good.
-- The published reconstruction used the full set with terrestrial laser scans registered in
-  alongside. Those scans are not in v1.0 — see the README.
+- The published reconstruction used the full image set with the laser scans registered in
+  alongside. Those scans ship with this dataset under `laser/`. They are `.lsp`, which only
+  RealityScan reads.

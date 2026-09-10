@@ -1,0 +1,10 @@
+{
+  "files": 241,
+  "bytes": 9298714252,
+  "gib": 8.66,
+  "stations": 43,
+  "tiers": {
+    "half": 32,
+    "quarter": 209
+  }
+}

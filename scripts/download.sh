@@ -3,6 +3,7 @@
 #   ./scripts/download.sh --sample            small evaluation pack
 #   ./scripts/download.sh --full              everything (41.9 GB, 2,751 images)
 #   ./scripts/download.sh --group NAME [...]  one or more capture groups
+#   ./scripts/download.sh --laser             the 241 laser scan files (8.66 GB)
 set -euo pipefail
 
 HF_REPO="${HF_REPO:-Matt1Up/chicago-grantpark-photogrammetry}"
@@ -12,6 +13,7 @@ groups=(); mode=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --sample) mode=sample; shift ;;
+    --laser)  mode=laser;  shift ;;
     --full)   mode=full;   shift ;;
     --group)  groups+=("$2"); mode=group; shift 2 ;;
     --dest)   DEST="$2"; shift 2 ;;
@@ -35,6 +37,7 @@ args=(download "$HF_REPO" --repo-type dataset --local-dir "$DEST")
 
 case "$mode" in
   sample) args+=(--include "sample/*") ;;
+  laser)  args+=(--include "laser/*") ;;
   full)   args+=(--include "images/*") ;;
   group)  for g in "${groups[@]}"; do args+=(--include "images/${g}*"); done ;;
 esac
