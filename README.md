@@ -138,6 +138,20 @@ COLMAP, Meshroom.
 The GPS in EXIF will place the reconstruction roughly on the map, but it is not the scale
 reference — see [Scale](#scale) above.
 
+## Gaussian splatting
+
+No camera poses ship with this set, so run COLMAP or **GLOMAP** first — GLOMAP does global
+structure-from-motion and is far faster than COLMAP on 2,751 images.
+
+Vanilla 3DGS is built for bounded scenes of a few hundred images and will run out of memory on
+a city block. The large-scale variants are what you want: CityGaussian, VastGaussian,
+Hierarchical 3DGS, Octree-GS, Scaffold-GS.
+
+Downsample to ~1600 px wide before training. Nothing trains at 5467 px, and the originals are
+here so you can pick your own resolution.
+
+Same applies to NeRF and other radiance-field work — poses first, then downsample.
+
 ## Notes
 
 - **Three sensor crops appear in the set.** 5467 × 3582 for most of it, 5464 × 3070 for the
