@@ -2,7 +2,7 @@
 
 The images are **not stored in this GitHub repository** — GitHub is not built for this, and
 Git LFS bandwidth caps would make it unusable. This repo holds documentation, manifests and
-checksums; the images live on hosts designed for large public datasets.
+checksums; the images and laser scans live on Hugging Face.
 
 Total: **41.9 GB of images (2,751 files), plus 8.66 GB of laser scans (241 files).**
 
@@ -18,35 +18,45 @@ Total: **41.9 GB of images (2,751 files), plus 8.66 GB of laser scans (241 files
 - No 42 GB of scratch space needed just to unpack an archive.
 
 **Nothing is gzipped.** JPEG is already compressed — measured on this dataset, gzip reclaims
-**0.2%** while costing hours of CPU and destroying random access. Where archives are offered
-(mirrors below), they are **store-only ZIPs**, split per capture group.
+**0.2%** while costing hours of CPU and destroying random access.
 
 ---
 
-## Primary — Hugging Face
+## Hugging Face
 
 Resumable, parallel, hash-verified, and the CLI handles retries for you.
 
 ```bash
-pip install -U 'huggingface_hub[cli]'
+pip install -U huggingface_hub
 
 # sample pack (~620 MB) — look before you commit to 41.9 GB
 ./scripts/download.sh --sample
 
-# everything
+# everything — images, laser scans, sample
 ./scripts/download.sh --full
+
+# the 2,751 images only
+./scripts/download.sh --images
 
 # just one flight
 ./scripts/download.sh --group Grid_Down_1
 ```
 
-Or browse the files directly: **https://huggingface.co/datasets/Matt1Up/chicago-grantpark-photogrammetry**
+Or browse the files directly: **https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry**
 
-Raw CLI, if you prefer not to use the wrapper:
+Raw CLI, if you prefer not to use the wrapper. Run it again if it stops — finished files are
+skipped.
 
 ```bash
-hf download Matt1Up/chicago-grantpark-photogrammetry --repo-type dataset --local-dir ./data --include 'images/*'
+# everything
+hf download Matt1up/chicago-grantpark-photogrammetry --repo-type dataset --local-dir ./data
+
+# images only
+hf download Matt1up/chicago-grantpark-photogrammetry --repo-type dataset --local-dir ./data --include 'images/*'
 ```
+
+The full set is 3,048 files. If Hugging Face answers `429 Too Many Requests`, that is its rate
+limit — wait five minutes and run the same command again, or log in first with `hf auth login`.
 
 ---
 
@@ -65,28 +75,11 @@ scanner resolution.
 
 ---
 
-## Mirror — Internet Archive
-
-Permanent, no account needed, and every item gets a **BitTorrent** file automatically.
-Torrent is the friendliest option for the full set: it resumes, verifies, parallelises, and
-costs the project nothing.
-
-**https://archive.org/details/chicago-grantpark-photogrammetry-2020**
-
-```bash
-# whole set over torrent
-aria2c https://archive.org/download/chicago-grantpark-photogrammetry-2020/chicago-grantpark-photogrammetry-2020 _archive.torrent
-
-# or a single group over plain HTTPS, resumable
-curl -C - -O https://archive.org/download/chicago-grantpark-photogrammetry-2020/images/Grid_Down_1-1.jpg
-```
-
----
-
 ## Sample pack
 
 A small curated subset — enough to judge image quality, overlap and metadata before
-committing to the full download. Served from `files.hometwin.io`.
+committing to the full download. It is on Hugging Face under `sample/`;
+`./scripts/download.sh --sample` fetches it.
 
 ---
 
@@ -96,11 +89,7 @@ committing to the full download. Served from `files.hometwin.io`.
 ./scripts/verify.sh
 ```
 
-Checks SHA-256 for every file you actually have and ignores the rest, so partial downloads
-verify cleanly. `manifest/checksums.sha256` is the authoritative list;
-`manifest/images.csv` additionally carries dimensions, capture time and GPS per image.
-
-## If a mirror is down
-
-All mirrors carry byte-identical files with matching checksums. Pull from whichever works —
-`verify.sh` will confirm you got the right bytes regardless of source.
+Checks SHA-256 for every image and laser file you actually have and ignores the rest, so
+partial downloads verify cleanly. `manifest/checksums.sha256` (images) and
+`manifest/laser.sha256` are the authoritative lists; `manifest/images.csv` additionally carries
+dimensions, capture time and GPS per image.

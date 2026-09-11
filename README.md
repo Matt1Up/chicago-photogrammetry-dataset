@@ -125,14 +125,25 @@ back to metric you need the laser cloud as a registration target, or ground cont
 **→ [huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry](https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry)**
 
 Click the **Files** tab and download whatever you want in a browser — no tooling, no account.
-This GitHub repo holds the documentation, manifests and checksums; the images and laser scans
-live there.
+The images and laser scans live there; the
+[GitHub repo](https://github.com/Matt1Up/chicago-photogrammetry-dataset) holds the
+documentation, manifests and checksums.
 
 **One file, straight from a browser or the shell:**
 
 ```bash
-curl -O https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry/resolve/main/images/Buildings_1-1.jpg
+curl -LO https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry/resolve/main/images/Buildings_1-1.jpg
 ```
+
+**Everything, one command.** Run it again if it stops — finished files are skipped.
+
+```bash
+pip install -U huggingface_hub
+hf download Matt1up/chicago-grantpark-photogrammetry --repo-type dataset --local-dir ./chicago
+```
+
+Take part of it with `--include`: `'sample/*'` (~620 MB, look before committing to 42 GB),
+`'images/*'`, `'laser/*'`, or `'images/Grid_Down_1*'` for one flight.
 
 **Everything, as a git repo** (needs git-lfs — this is 50 GB):
 
@@ -140,23 +151,26 @@ curl -O https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry
 git clone https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry
 ```
 
-**Or use the helper script**, which is just a wrapper around the Hugging Face CLI and adds
-resume, parallel transfers and hash checking:
+**Or the helper scripts** from the [GitHub repo](https://github.com/Matt1Up/chicago-photogrammetry-dataset),
+which wrap the same command and add `verify.sh` to check every image and laser file against the
+published SHA-256 lists:
 
 ```bash
-pip install -U 'huggingface_hub[cli]'
+git clone https://github.com/Matt1Up/chicago-photogrammetry-dataset && cd chicago-photogrammetry-dataset
 
 ./scripts/download.sh --sample              # ~620 MB, look before committing to 42 GB
-./scripts/download.sh --full                # all 2,751 images
+./scripts/download.sh --full                # everything — images, laser scans, sample
+./scripts/download.sh --images              # all 2,751 images
 ./scripts/download.sh --laser               # the 241 laser scan files
 ./scripts/download.sh --group Grid_Down_1   # one flight
+./scripts/verify.sh
 ```
 
-More detail and mirrors in **[docs/download.md](docs/download.md)**.
+More detail in **[docs/download.md](https://github.com/Matt1Up/chicago-photogrammetry-dataset/blob/main/docs/download.md)**.
 
 ## Reproducing the reconstruction
 
-See **[docs/reproduce.md](docs/reproduce.md)** for alignment settings. The images are ordinary
+See **[docs/reproduce.md](https://github.com/Matt1Up/chicago-photogrammetry-dataset/blob/main/docs/reproduce.md)** for alignment settings. The images are ordinary
 geotagged JPEGs, so any structure-from-motion tool will read them — RealityScan, Metashape,
 COLMAP, Meshroom.
 
@@ -210,7 +224,7 @@ is planned — open an issue if you need it and I will prioritise it.
 **They are downsampled.** `half_res` and `quarter_res`, not full scanner resolution.
 
 ```bash
-./scripts/download.sh --laser
+hf download Matt1up/chicago-grantpark-photogrammetry --repo-type dataset --local-dir ./chicago --include 'laser/*'
 ```
 
 `manifest/laser.csv` lists every file with its station, resolution tier and SHA-256.
@@ -227,7 +241,7 @@ Chicago / Grant Park Aerial Photogrammetry Dataset — Matthew Guertin, 2020.
 Licensed CC BY 4.0. https://github.com/Matt1Up/chicago-photogrammetry-dataset
 ```
 
-See [CITATION.cff](CITATION.cff) for BibTeX and academic citation formats.
+See [CITATION.cff](https://github.com/Matt1Up/chicago-photogrammetry-dataset/blob/main/CITATION.cff) for BibTeX and academic citation formats.
 
 ## Related
 
