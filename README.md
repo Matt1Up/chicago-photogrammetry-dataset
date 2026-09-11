@@ -1,13 +1,13 @@
 # Chicago / Grant Park — Aerial Photogrammetry + Terrestrial Laser Dataset
 
-**2,751 aerial photos (41.9 GB) plus the terrestrial laser scans (8.7 GB, 43 stations) over
+**2,751 aerial photos (45.0 GB) plus the terrestrial laser scans (9.3 GB, 43 stations) over
 Grant Park and downtown Chicago, June 2020.** CC BY 4.0.
 
 ## ⬇ Download
 
 ### **[→ huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry](https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry)**
 
-Browse the **Files** tab and take what you want — no account needed. The 50 GB of imagery and
+Browse the **Files** tab and take what you want — no account needed. The 54 GB of imagery and
 laser scans lives there because GitHub won't host files that size; this repo holds docs and
 checksums.
 
@@ -66,7 +66,7 @@ Full project write-up: **[mattguertin.com/portfolio/chicago](https://mattguertin
 
 | | |
 |---|---|
-| **Images** | 2,751 JPEG · 41.94 GB |
+| **Images** | 2,751 JPEG · 45.03 GB |
 | **Sensor** | Hasselblad L1D-20c — 1" 20 MP CMOS (DJI Mavic 2 Pro) |
 | **Resolution** | 5467 × 3582 (2,297) · 5464 × 3070 (400) · 5366 × 3575 (54) |
 | **Lens** | 10.3 mm — 28 mm full-frame equivalent, f/2.8 |
@@ -74,7 +74,7 @@ Full project write-up: **[mattguertin.com/portfolio/chicago](https://mattguertin
 | **Bounds** | 41.867317 – 41.874759 N · −87.624511 – −87.619413 W |
 | **Altitude** | 183 – 315 m above sea level |
 | **Captured** | 27–28 June 2020, 06:52 to 19:49 |
-| **Laser** | 241 files · 8.66 GB · 43 stations — [see below](#laser-scans) |
+| **Laser** | 241 files · 9.30 GB · 43 stations — [see below](#laser-scans) |
 
 ### Capture groups
 
@@ -142,10 +142,10 @@ pip install -U huggingface_hub
 hf download Matt1up/chicago-grantpark-photogrammetry --repo-type dataset --local-dir ./chicago
 ```
 
-Take part of it with `--include`: `'sample/*'` (~620 MB, look before committing to 42 GB),
+Take part of it with `--include`: `'sample/*'` (~650 MB, look before committing to 55 GB),
 `'images/*'`, `'laser/*'`, or `'images/Grid_Down_1*'` for one flight.
 
-**Everything, as a git repo** (needs git-lfs — this is 50 GB):
+**Everything, as a git repo** (needs git-lfs — this is 55 GB):
 
 ```bash
 git clone https://huggingface.co/datasets/Matt1up/chicago-grantpark-photogrammetry
@@ -158,7 +158,7 @@ published SHA-256 lists:
 ```bash
 git clone https://github.com/Matt1Up/chicago-photogrammetry-dataset && cd chicago-photogrammetry-dataset
 
-./scripts/download.sh --sample              # ~620 MB, look before committing to 42 GB
+./scripts/download.sh --sample              # ~650 MB, look before committing to 55 GB
 ./scripts/download.sh --full                # everything — images, laser scans, sample
 ./scripts/download.sh --images              # all 2,751 images
 ./scripts/download.sh --laser               # the 241 laser scan files
@@ -206,7 +206,7 @@ here so you can pick your own resolution.
 
 *Registered laser point cloud — Grant Park tree line and ground plane.*
 
-**241 files, 8.66 GB, 43 scan stations**, from a FARO Focus S150. This is the scale reference
+**241 files, 9.30 GB, 43 scan stations**, from a FARO Focus S150. This is the scale reference
 the images are registered to.
 
 | tier | files |

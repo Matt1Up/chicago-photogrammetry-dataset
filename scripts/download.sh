@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Download the dataset from Hugging Face.
 #   ./scripts/download.sh --sample            small evaluation pack
-#   ./scripts/download.sh --images            all 2,751 images (41.9 GB)
-#   ./scripts/download.sh --laser             the 241 laser scan files (8.66 GB)
+#   ./scripts/download.sh --images            all 2,751 images (45.0 GB)
+#   ./scripts/download.sh --laser             the 241 laser scan files (9.30 GB)
 #   ./scripts/download.sh --full              everything — images, laser scans, sample
 #   ./scripts/download.sh --group NAME [...]  one or more capture groups
 set -euo pipefail

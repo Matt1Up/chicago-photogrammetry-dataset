@@ -4,7 +4,7 @@ The images are **not stored in this GitHub repository** — GitHub is not built 
 Git LFS bandwidth caps would make it unusable. This repo holds documentation, manifests and
 checksums; the images and laser scans live on Hugging Face.
 
-Total: **41.9 GB of images (2,751 files), plus 8.66 GB of laser scans (241 files).**
+Total: **45.0 GB of images (2,751 files), plus 9.30 GB of laser scans (241 files).**
 
 ---
 
@@ -12,10 +12,10 @@ Total: **41.9 GB of images (2,751 files), plus 8.66 GB of laser scans (241 files
 
 **The images are published as individual files, not one giant archive.** That is deliberate:
 
-- You can download **one capture group** instead of all 41.9 GB.
+- You can download **one capture group** instead of all 45.0 GB.
 - Downloads **resume**. A dropped connection at 38 GB does not start over.
 - Each file is **individually checksummed**, so corruption is localised, not fatal.
-- No 42 GB of scratch space needed just to unpack an archive.
+- No 45 GB of scratch space needed just to unpack an archive.
 
 **Nothing is gzipped.** JPEG is already compressed — measured on this dataset, gzip reclaims
 **0.2%** while costing hours of CPU and destroying random access.
@@ -29,7 +29,7 @@ Resumable, parallel, hash-verified, and the CLI handles retries for you.
 ```bash
 pip install -U huggingface_hub
 
-# sample pack (~620 MB) — look before you commit to 41.9 GB
+# sample pack (~650 MB) — look before you commit to 55.0 GB
 ./scripts/download.sh --sample
 
 # everything — images, laser scans, sample
@@ -63,7 +63,7 @@ limit — wait five minutes and run the same command again, or log in first with
 ## Laser scans
 
 ```bash
-./scripts/download.sh --laser        # 241 files, 8.66 GB
+./scripts/download.sh --laser        # 241 files, 9.30 GB
 ```
 
 `.lsp` format — RealityScan reads these directly via `importLaserScanFolder`, and RealityScan

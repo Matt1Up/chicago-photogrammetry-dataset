@@ -3,8 +3,8 @@ message: "If you use this dataset, please cite it as below."
 type: dataset
 title: "Chicago / Grant Park Aerial Photogrammetry and Terrestrial Laser Dataset"
 abstract: >-
-  2,751 full-resolution geotagged aerial photographs (41.9 GB) and 241 terrestrial laser scan
-  files across 43 stations (8.66 GB) covering Grant Park and the surrounding downtown Chicago
+  2,751 full-resolution geotagged aerial photographs (45.0 GB) and 241 terrestrial laser scan
+  files across 43 stations (9.30 GB) covering Grant Park and the surrounding downtown Chicago
   blocks, captured 27-28 June 2020 with a DJI Mavic 2 Pro (Hasselblad L1D-20c) and a FARO Focus
   S150. The aerial imagery is registered to the laser point cloud, which is the scale reference
   -- GPS was not used for scale. Capture density is deliberately uneven: the wider city is
